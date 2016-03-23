@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Image Focus</title>
+<script type="text/javascript" src="./jquery-1.12.2.min.js"></script>
+<script type="text/javascript" src="./imgFocus.js"></script>
+<style type="text/css">
+
+    body{
+        padding:0;
+        margin: 0;
+    }
+    
+    .wrap{
+        width: 1600px;
+        height: auto;
+        position: relative;
+    }
+
+    .focusImgDiv{
+        margin-top:50px;
+        display:inline-block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .focusImgDiv:after {
+        content:'';
+        display:block;
+        width:33px;
+        height:33px;
+        position:absolute;
+        top:0;
+        right:0;
+    }
+
+    .focusImg {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .focusImg::selection { 
+        background-color: transparent;
+    }
+
+    .targets{
+        width:50px;
+        height:50px;
+        border:2px solid #000;
+        background-color:#fff;
+        position: absolute;
+        z-index: 1004;
+    }
+
+    .targets:hover{
+        cursor:pointer;
+    }
+
+    .targetInfo{
+        top:-75px;
+        left:40px;
+        width:150px;
+        height:150px;
+        position: absolute;
+        z-index: 1004;
+        display:none;
+        border:2px solid #ff0000;
+        background-color:#fff;
+    }
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="focusImgDiv">
+        <img src="./zoom.jpg" class="focusImg" />
+        <div class="targets" style="top:60px;left:370px;">
+            <div class="targetInfo">말풍선!!</div>
+        </div>
+        <div class="targets" style="top:190px;left:50px;"></div>
+        <div class="targets" style="top:360px;left:400px;">
+            <div class="targetInfo">말풍선!!</div>
+        </div>
+        <div class="targets" style="top:110px;left:920px;">
+            <div class="targetInfo">말풍선!!@@!!@@!!</div>
+        </div>
+        <div class="targets" style="top:200px;left:500px;"></div>
+    </div>
+</div>
+</body>
+</html>
