@@ -1,7 +1,5 @@
 # imageFocus
 
-targets object is zoom effect
-
 imgFocus( args /* {} */, callback);
 
 Ex1)
