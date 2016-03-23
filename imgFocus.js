@@ -205,8 +205,6 @@
 
     $(function(){
 
-        // imgFocus( args /* {} */, callback);
-
         imgFocus.setImg({
             'img': '.focusImg'
             ,'imgWidth': 1024
@@ -214,20 +212,8 @@
             ,'targetInfo': '.targetInfo'
             ,'container': '.focusImgDiv'
         }, function(){
-            /**
-             * 줌 완료 후 실행되는 함수
-             * 해당 매게변수는 아래 함수 처럼 비어있어도 됨.
-             */
             try { console.info('zoom complete function'); } catch (e) {}
         });
-
-        /*imgFocus.setImg({
-            'img': '.focusImg'
-            ,'imgWidth': 1024
-            ,'target': '.targets'
-            ,'targetInfo': '.targetInfo'
-            ,'container': '.focusImgDiv'
-        });*/
 
         $(this).on('click', '.targets', function(e){
 
@@ -235,7 +221,6 @@
                 imgFocus.show(e);
             else
                 imgFocus.hide();
-            
 
         });
 
