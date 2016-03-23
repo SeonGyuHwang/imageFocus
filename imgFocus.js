@@ -1,7 +1,7 @@
 (function($){
     'use strict';
 
-    var pulipZoom = {
+    var imgFocus = {
         _ : {}
         ,options : {}
         ,isShow: false
@@ -9,10 +9,10 @@
         ,callbackRun : false
         ,setImg : function(options, callback) {
             this.options = options || this.options;
-            
+
             if( $.isFunction(callback) )
                 this.callback = callback;
-                
+
             this._.img = document.createElement('img');
             $(this._.img)
                 .addClass('targetImg')
@@ -39,9 +39,9 @@
                 'width': this.options.imgWidth+'px'
                 ,'height': 'auto'
             }).load(function() {
-                $(pulipZoom.options.container).css({
-                    'width': $(pulipZoom.options.img).width() + 'px'
-                    ,'height': $(pulipZoom.options.img).height() + 'px'
+                $(imgFocus.options.container).css({
+                    'width': $(imgFocus.options.img).width() + 'px'
+                    ,'height': $(imgFocus.options.img).height() + 'px'
                 });
             });
 
@@ -69,10 +69,10 @@
                     }
                 });
             }
-            
+
         },
         setFocus : function () {
-            
+
             this._.sourceWidth = $(this.options.img).outerWidth();
             this._.sourceHeight = $(this.options.img).outerHeight();
 
@@ -106,22 +106,22 @@
                 step: function(now) {
                     now += 1*1;
 
-                    if( pulipZoom.isShow ) {
+                    if( imgFocus.isShow ) {
                         if (now >= 1.6) {
-                            $(pulipZoom._.img).css({
-                                'top': pulipZoom._.targetTop
-                                , 'left': pulipZoom._.targetLeft
+                            $(imgFocus._.img).css({
+                                'top': imgFocus._.targetTop
+                                , 'left': imgFocus._.targetLeft
                             }).show();
 
-                            if( !pulipZoom.callbackRun && $.isFunction(pulipZoom.callback) ) {
-                                pulipZoom.callbackRun = true;
-                                pulipZoom.callback.call(pulipZoom);
+                            if( !imgFocus.callbackRun && $.isFunction(imgFocus.callback) ) {
+                                imgFocus.callbackRun = true;
+                                imgFocus.callback.call(imgFocus);
                             }
 
                             return false;
                         } else {
-                            var cY = $(pulipZoom._.e.currentTarget).data('pos').top;
-                            var cX = $(pulipZoom._.e.currentTarget).data('pos').left;
+                            var cY = $(imgFocus._.e.currentTarget).data('pos').top;
+                            var cX = $(imgFocus._.e.currentTarget).data('pos').left;
 
                             $(this).css({
                                 '-webkit-transform': 'scale(' + now + ')'
@@ -137,13 +137,13 @@
                             });
                         }
                     } else {
-                        pulipZoom.hide();
+                        imgFocus.hide();
                     }
                 },
                 complete: function(){
-                    
-                    if( !pulipZoom.isShow ) 
-                        pulipZoom.hide();
+
+                    if( !imgFocus.isShow )
+                        imgFocus.hide();
 
                 },
                 duration: 850
@@ -171,13 +171,13 @@
                 'top': this._.infoTop + 'px'
                 , 'left': this._.infoLeft + 'px'
             }).show();
-            
+
         },
         show: function(e){
             this._.e = e;
             this.isShow = true;
             $(this.options.target).hide();
-            
+
             this.setFocus();
             this.setTargetInfo();
         },
@@ -202,12 +202,12 @@
         }
     };
 
-    
+
     $(function(){
 
-        // pulipZoom( args /* {} */, callback);
-        
-        pulipZoom.setImg({
+        // imgFocus( args /* {} */, callback);
+
+        imgFocus.setImg({
             'img': '.focusImg'
             ,'imgWidth': 1024
             ,'target': '.targets'
@@ -221,20 +221,20 @@
             try { console.info('zoom complete function'); } catch (e) {}
         });
 
-        /*pulipZoom.setImg({
+        /*imgFocus.setImg({
             'img': '.focusImg'
             ,'imgWidth': 1024
             ,'target': '.targets'
             ,'targetInfo': '.targetInfo'
             ,'container': '.focusImgDiv'
         });*/
-        
+
         $(this).on('click', '.targets', function(e){
 
-            if( !pulipZoom.isShow ) 
-                pulipZoom.show(e);
-            else 
-                pulipZoom.hide();
+            if( !imgFocus.isShow )
+                imgFocus.show(e);
+            else
+                imgFocus.hide();
             
 
         });
