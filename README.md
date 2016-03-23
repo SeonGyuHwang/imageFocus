@@ -1,2 +1,3 @@
 # imageFocus
-Image in target zoom
+
+targets object is zoom effect
